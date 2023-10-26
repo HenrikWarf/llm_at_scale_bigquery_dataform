@@ -1,7 +1,5 @@
 # Using Large Language Models at Scale with Google BigQuery, Dataform and Vertex AI
 
-Data Lineage in Dataform using LLMs from Vertex AI.
-
 ## **Introduction**
 
 Generative AI and Large Language Models(LLMs) are of course the big hype right now. I meet with organisations and have conversations daily around use cases and implementations around the topic. The use cases are different in-between organisations and industries ranging from virtual agents and search capabilities to content creation for product and marketing purposes as well automating tasks such as summarisation, classification, sentiment and entity extraction (+ much more).
