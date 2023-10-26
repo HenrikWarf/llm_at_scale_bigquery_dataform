@@ -1,0 +1,18 @@
+-- Igesting raw reviews from Public Dataset IMDB - Reviews
+config {
+  type: "table", 
+  columns: {
+    review: "User review's in IMDb.", 
+    split: "It has two categories test and train.",
+    label: "It has three categories Negative, Positive and Unsupervised. All Unsupervised label has only split equals-to train.",
+    movie_id: "UniqueId for the movie in IMDb.",
+    reviewr_rating: "Reviewer rating for particular movie in IMDb. For train-unsupervised, reviewer_rating is NULL.",
+    movie_url: "Movie url for corresponding movie_id",
+    title: "Title of the movie for corresponding movie_id"
+  }
+}
+
+SELECT * 
+FROM ${ref('ingest_raw')}
+TABLESAMPLE SYSTEM (0.000001 PERCENT)
+WHERE rand() < 0.0001

@@ -1,0 +1,30 @@
+config { 
+    type: "table" ,
+    dependencies: [ "llm_model_connection" ]
+}
+
+SELECT
+    REGEXP_REPLACE(ml_generate_text_llm_result, ' ', '') AS ml_generate_text_llm_result, 
+    * EXCEPT (ml_generate_text_llm_result, ml_generate_text_status)
+FROM
+  ML.GENERATE_TEXT(
+    MODEL `llm_model.llm_vertex_model`,
+    (
+  SELECT
+        CONCAT('''Tell me whether the following movie review sentiment is positive or negative or neutral. 
+        - Use only the words positive, negative and neutral. 
+        - Remove all spaces in the response. 
+        - Answer in lower letters.
+        Move Review:
+        ''', 
+        review
+        )
+        AS prompt, 
+        reviewer_rating,
+        review as original_review
+        FROM ${ref('staging_data')}
+    ),
+    STRUCT(
+      0.1 AS temperature,
+      20 AS max_output_tokens,
+      TRUE AS flatten_json_output))

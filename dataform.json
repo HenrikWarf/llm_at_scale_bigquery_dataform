@@ -1,0 +1,8 @@
+{
+  "defaultSchema": "llm_usecases_01",
+  "assertionSchema": "llm_usecases_01_assertions",
+  "warehouse": "bigquery",
+  "defaultDatabase": "",
+  "defaultLocation": "US"
+}
+    

@@ -1,0 +1,9 @@
+config {
+    type : "operations"
+}
+
+CREATE SCHEMA IF NOT EXISTS llm_model
+  OPTIONS (
+    description = 'Dataset to store LLM models used for LLM usecases_01',
+    location = 'US'
+  )
